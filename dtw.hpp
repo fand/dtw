@@ -16,21 +16,21 @@ private:
     T result;
     
 public:
-    Dtw();
-    ~Dtw();
+    Dtw( const char *path_1, const char *path_2 );
+    virtual ~Dtw();
 
-    void readFile( std::vector< T > *dst, const char *path );
-    void readTwoFiles( const char *path_1, const char *path_2 );
-
-    void initTables();
+    void readFile( std::vector< T > &dst, const char *path );
 
     T** createTable( int n, int m );
     void deleteTable( T **p );
     
     void calcDtw();
-    void calcDistance();
-    void calcGamma();
+    void calcDistance( T **table, const std::vector< T > &seq_1, const std::vector< T > &seq_2 );
+    void calcGamma( T **table_d, T **table_g );
     
     T getResult();
+
+    void printseq( int n, int start, int end );
+    void printlen();
 };
 

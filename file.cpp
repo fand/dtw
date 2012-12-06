@@ -7,7 +7,8 @@
 #include <sys/time.h>
 
 #include "watch.hpp"
-#include "dtw.hpp"
+#include "FastDtw.hpp"
+
 
 int main( int argc, char** argv )
 {
@@ -17,25 +18,17 @@ int main( int argc, char** argv )
         return -1;
     }
 
+    FastDtw< long > dtw( argv[1], argv[2] );
 
-    Dtw< double >* dtw = new Dtw< double >();
     
-    dtw->readTwoFiles( argv[1], argv[2] );
+    Watch watch;    // Watch watch()としてはいけない
 
-    Watch* watch = new Watch();
-
-    watch->start();
+    watch.start();
+    dtw.calcDtw();
+    watch.stop();
     
-    dtw->calcDtw();
-
-    watch->stop();
-    
-    std::cout << "DTW : " << dtw->getResult() << std::endl;
-    std::cout << "計算時間 : " << watch->getInterval() << " sec" << std::endl;
-    std::cout << std::endl;
-    
-    delete( dtw );
-    delete( watch );
+    std::cout << "DTW : " << dtw.getResult() << std::endl;
+    std::cout << "計算時間 : " << watch.getInterval() << " sec" << std::endl;
     
     return 0;
 }

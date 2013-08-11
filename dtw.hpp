@@ -32,5 +32,6 @@ public:
 
     void printseq( int n, int start, int end );
     void printlen();
+    void printGamma();
 };
 

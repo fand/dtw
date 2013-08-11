@@ -3,7 +3,7 @@
 # fand
 
 CC      = g++
-OBJS    = file.o FastDtw.o dtw.o watch.o
+OBJS    = main.o dtw.o dtw.o watch.o
 
 
 # 生成規則部

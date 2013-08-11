@@ -162,6 +162,20 @@ void Dtw< T >::printlen()
 }
 
 
+template < class T >
+void Dtw< T >::printGamma()
+{
+    for( int i = 0; i< this->len_1; i++ )
+    {
+        for( int j = 0; j < this->len_2; j++ )
+        {
+            std::cout << this->table_g[i][j] << "\t";
+        }
+        std::cout << std::endl;
+    }
+}
+
+
 
 //
 // テンプレート実装コードの生成
